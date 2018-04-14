@@ -1,0 +1,83 @@
+#map {
+  height: 500px;
+  width: 80%;
+  margin: auto;
+ }
+
+#timings{
+  margin-top: 5em;
+}
+
+#timings p, #location p{
+  margin-bottom: 10px;
+}
+
+#timingsTable table{
+ margin: auto;
+ margin-top: 10px
+ width: 80%;
+}
+
+#timingsTable td{
+  padding: 5px 10px;
+  width: 20vw;
+}
+
+.bottomBorder{
+  border-bottom: 0.5px solid #777777 !important;
+}
+#tableHeading {
+    /* background-image: -webkit-linear-gradient(0deg, #2380ff 0%, #52fdd9 100%);
+    color: white; */
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.img-fluid{
+  /* position: fixed; */
+  width: 100vw;
+}
+
+#img-banner{
+  width: 100vw;
+  border: 2px solid red;
+  position: absolute;
+  z-index: -1;
+}
+#iconImage{
+  width: 200px;
+}
+.booking-form{
+  width: 90%;
+}
+.bold{
+  font-weight: bold;
+  display: inline;
+}
+.banner-area{
+  background: url("/img/header-img.png") no-repeat;
+  background-position: 80%;
+  background-size:contain;
+  height: 100vh;
+}
+.banner-content{
+  flex: 0 0 50%;
+  max-width: 40%;
+  position: absolute;
+  left: 20%;
+}
+
+.about-right{
+  height: 100% !important;
+  background: #222;
+  padding: 10% 5%;
+}
+.about-area{
+  padding: 0;
+  background: url("../img/about-img.jpg") no-repeat;
+  background-size: 50%;
+  background-size: cover;
+}
+.booking-form{
+  width: 100%;
+}
