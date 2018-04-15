@@ -131,12 +131,17 @@ $(document).ready(function(){
 			};
 
 			$("#blog"+(i+1)).find(".blogLink").attr("href",blog.link);
-			$("#blog"+(i+1)).find(".blogImage").attr("src",blog.image);
+			$(".blog"+(i+1)+"Image").attr("src",blog.image);
 			$("#blog"+(i+1)).find(".blogLink").html(blog.title);
 			$("#blog"+(i+1)).find(".blogDesc").html(blog.desc);
 			$("#blog"+(i+1)+"date").html(blog.datePublished);
 		}
 
+		if(blogs.length<3){
+			for(var i = blogs.length; i<3; i++){
+				$(".blog"+(i+1)+"Image").attr("src","/img/b"+i+".jpg");
+			}
+		}
 		$(".coverLoad").css({
 			display:"none"
 		});
