@@ -82,35 +82,76 @@ $(document).ready(function(){
 
       // -------   Mail Send ajax
 
-         $(document).ready(function() {
-            var form = $('#myForm'); // contact form
-            var submit = $('.submit-btn'); // submit button
-            var alert = $('.alert-msg'); // alert div for show alert message
+         // $(document).ready(function() {
+         //    var form = $('#myForm'); // contact form
+         //    var submit = $('.submit-btn'); // submit button
+         //    var alert = $('.alert-msg'); // alert div for show alert message
+				 //
+         //    // form submit event
+         //    form.on('submit', function(e) {
+         //        // e.preventDefault(); // prevent default form submit
+				 //
+         //        // $.ajax({
+         //        //     url: 'mail.php', // form action url
+         //        //     type: 'POST', // form submit method get/post
+         //        //     dataType: 'html', // request type html/json/xml
+         //        //     data: form.serialize(), // serialize form data
+         //        //     beforeSend: function() {
+         //        //         alert.fadeOut();
+         //        //         submit.html('Sending....'); // change submit button text
+         //        //     },
+         //        //     success: function(data) {
+         //        //         alert.html(data).fadeIn(); // fade in response data
+         //        //         form.trigger('reset'); // reset form
+         //        //         submit.attr("style", "display: none !important");; // reset submit button text
+         //        //     },
+         //        //     error: function(e) {
+         //        //         console.log(e)
+         //        //     }
+         //        });
+         //    });
+  });
 
-            // form submit event
-            form.on('submit', function(e) {
-                // e.preventDefault(); // prevent default form submit
+	function handleBlogs(data){
+		var blogs = data.feed.entry;
 
-                // $.ajax({
-                //     url: 'mail.php', // form action url
-                //     type: 'POST', // form submit method get/post
-                //     dataType: 'html', // request type html/json/xml
-                //     data: form.serialize(), // serialize form data
-                //     beforeSend: function() {
-                //         alert.fadeOut();
-                //         submit.html('Sending....'); // change submit button text
-                //     },
-                //     success: function(data) {
-                //         alert.html(data).fadeIn(); // fade in response data
-                //         form.trigger('reset'); // reset form
-                //         submit.attr("style", "display: none !important");; // reset submit button text
-                //     },
-                //     error: function(e) {
-                //         console.log(e)
-                //     }
-                });
-            });
-        });
+		var blog;
+		for(var i=0; i<blogs.length; i++){
+			var content = blogs[i].content.$t;
+			var imageLink = getvalueFromHtml(content, "href");
+			var blogDesc = getDescFromHtml(content, "width=\"320\" /></a></div><br />");
+			var blogLink = blogs[i].link[4].href;
+			console.log(blogLink);
+			blog = {
+				title: blogs[i].title.$t,
+				datePublished: blogs[i].published.$t.substr(0, blogs[i].published.$t.indexOf('T')),
+				image: imageLink,
+				link: blogLink,
+				desc: blogDesc
+			};
 
+			$("#blog"+(i+1)).find(".blogLink").attr("href",blog.link);
+			$("#blog"+(i+1)).find(".blogImage").attr("src",blog.image);
+			$("#blog"+(i+1)).find(".blogLink").html(blog.title);
+			$("#blog"+(i+1)).find(".blogDesc").html(blog.desc);
+			$("#blog"+(i+1)+"date").html(blog.datePublished);
+		}
 
- });
+		$(".coverLoad").css({
+			display:"none"
+		});
+	}
+
+function getvalueFromHtml(html, identifier){
+	var image = html.substr(html.indexOf(identifier), html.length);
+	var img1 = image.substr(image.indexOf('"')+1, image.length);
+	img1 = img1.substr(0, img1.indexOf('"'));
+	return img1;
+}
+
+function getDescFromHtml(html, identifier){
+	var image = html.substr(html.indexOf(identifier)+identifier.length, html.length);
+	var img1 = image;
+	img1 = img1.substr(0, img1.indexOf("\u003C\/div\u003E\u003Cdiv\u003E"));
+	return img1;
+}
