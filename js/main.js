@@ -135,6 +135,7 @@ $(document).ready(function(){
 			$("#blog"+(i+1)).find(".blogLink").html(blog.title);
 			$("#blog"+(i+1)).find(".blogDesc").html(blog.desc);
 			$("#blog"+(i+1)+"date").html(blog.datePublished);
+			$("#blog"+(i+1)).find(".date").html(blog.datePublished);
 		}
 
 		$(".coverLoad").css({
