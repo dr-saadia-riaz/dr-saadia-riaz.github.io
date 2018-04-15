@@ -74,6 +74,13 @@
       text-align: left;
   }
 }
+@media (max-width: 1599px) and (min-width:768px) {
+  .banner-content {
+      left: 10%!important;
+      max-width: 35%!important;
+      text-align: left;
+  }
+}
 .about-right{
   height: 100% !important;
   background: #222;
@@ -127,4 +134,11 @@
 }
 .coverLoad img{
   width: 50%;
+}
+
+#home a{
+  text-align: left;
+  line-height: inherit;
+  padding-top: 5%;
+  padding-bottom: 5%;
 }

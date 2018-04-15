@@ -2137,7 +2137,7 @@ nav a:hover {
   height: 850px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .banner-area .fullscreen {
     height: 800px;
   }
