@@ -137,11 +137,6 @@ $(document).ready(function(){
 			$("#blog"+(i+1)+"date").html(blog.datePublished);
 		}
 
-		if(blogs.length<3){
-			for(var i = blogs.length; i<3; i++){
-				$(".blog"+(i+1)+"Image").attr("src","/img/b"+i+".jpg");
-			}
-		}
 		$(".coverLoad").css({
 			display:"none"
 		});

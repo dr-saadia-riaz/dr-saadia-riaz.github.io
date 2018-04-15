@@ -93,6 +93,7 @@
 #blogs{
   background: #222;
   position: relative;
+  padding-bottom: 10%;
 }
 
 #blogs h1{
@@ -123,4 +124,7 @@
   background-color: #222;
   position: absolute;
   top: 0;
+}
+.coverLoad img{
+  width: 50%;
 }
