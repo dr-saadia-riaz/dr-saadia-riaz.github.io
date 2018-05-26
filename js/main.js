@@ -116,14 +116,12 @@ $(document).ready(function(){
 
 	function handleBlogs(data){
 		var blogs = data.feed.entry;
-
 		var blog;
 		for(var i=0; i<blogs.length; i++){
 			var content = blogs[i].content.$t;
-			var imageLink = getvalueFromHtml(content, "href");
+			var imageLink = getImageFromHtml(content);
 			var blogDesc = getDescFromHtml(content, "width=\"320\" /></a></div><br />");
 			var blogLink = blogs[i].link[4].href;
-			console.log(blogLink);
 			blog = {
 				title: blogs[i].title.$t,
 				datePublished: blogs[i].published.$t.substr(0, blogs[i].published.$t.indexOf('T')),
@@ -131,8 +129,9 @@ $(document).ready(function(){
 				link: blogLink,
 				desc: blogDesc
 			};
-
+			console.log(blog.datePublished);
 			$("#blog"+(i+1)).find(".blogLink").attr("href",blog.link);
+			$(".image"+(i+1)+"Link").attr("href", blog.link);
 			$(".blog"+(i+1)+"Image").attr("src",blog.image);
 			$("#blog"+(i+1)).find(".blogLink").html(blog.title);
 			$("#blog"+(i+1)).find(".blogDesc").html(blog.desc);
@@ -145,10 +144,14 @@ $(document).ready(function(){
 		});
 	}
 
-function getvalueFromHtml(html, identifier){
-	var image = html.substr(html.indexOf(identifier), html.length);
-	var img1 = image.substr(image.indexOf('"')+1, image.length);
-	img1 = img1.substr(0, img1.indexOf('"'));
+function getImageFromHtml(html){
+	var image;
+	image = html.substr(0, html.indexOf("jpg"));
+	if(image.length < 3){
+		image = html.substr(0, html.indexOf("png"));
+	}
+	var img1 = image.substr(image.lastIndexOf('"')+1, image.length);
+	// img1 = img1.substr(0, img1.indexOf('"'));
 	return img1;
 }
 
