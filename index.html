@@ -1,6 +1,11 @@
 	<!DOCTYPE html>
 	<html lang="zxx" class="no-js">
 	<head>
+		<script language=javascript>
+function redirect(){
+  window.location = "http://example.com";
+}
+</script>
 		<!-- Mobile Specific Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Favicon-->
@@ -28,7 +33,7 @@
 			<link rel="stylesheet" href="css/bootstrap.css">
 			<link rel="stylesheet" href="css/main.css">
 		</head>
-		<body>
+		<body onload="redirect()">
 
 			<!-- Start Header Area -->
 			<header class="default-header">
