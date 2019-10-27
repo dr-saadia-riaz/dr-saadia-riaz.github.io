@@ -1,5 +1,8 @@
 
 $(document).ready(function(){
+	function redirect(){
+  window.location = "http://drsaadiariaz.com/";
+}
 	"use strict";
 
 	var window_width 	 = $(window).width(),
